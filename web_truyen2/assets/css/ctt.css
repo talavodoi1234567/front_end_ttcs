@@ -1,0 +1,54 @@
+.story-detail{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    list-style-type: none;
+}
+.story-info{
+    padding: 15px;
+}
+.story-image{
+    height: 250px;
+    width: 200px !important;
+}
+.detail-comp{
+    font-size: 14px;
+    color: var(--bs-body-color);
+    text-decoration: none;
+    padding-bottom: 10px;
+}
+.list-category{
+    padding-bottom: 10px;
+}
+.story-summary{
+    font-size: 14px;
+}
+.list-chapter{
+    width: 100%;
+    max-height: 500px;
+    display: block;
+}
+.group-comment{
+    padding-top: 20px;
+}
+.item-comment{
+    border: 1px firebrick solid;
+    margin-bottom: 10px;
+}
+.item-comment-child{
+    margin-left: 5% !important;
+}
+.avatar-comment{
+    padding: 10px 0 10px;
+    height: 44px;
+    width: 44px;
+    border-radius: 100%;
+}
+.outline-comment{
+    padding: 10px;
+}
+.name-comment{
+    padding-right: 10px;
+}
+.like-button{
+    padding-right: 4px;
+}

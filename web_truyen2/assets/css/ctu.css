@@ -1,0 +1,27 @@
+.user-total{
+    height: 700px;
+}
+.user-selection{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-info{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.list-story{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-pic{  
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

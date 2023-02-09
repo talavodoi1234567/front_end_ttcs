@@ -1,0 +1,14 @@
+html,body{
+    height: 100% !important;
+}
+.login-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-form{
+    height: 400px;
+    width: 400px;
+    /* background-image: linear-gradient(0,rgba(101, 126, 151, 0.5),rgba(129, 130, 79, 0.5)),url(https://thumbs.dreamstime.com/b/teal-doggy-paw-print-tile-pattern-repeat-background-seamless-repeats-68378380.jpg); */
+}

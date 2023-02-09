@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5abbfec0ff.js" crossorigin="anonymous"></script>
+
+    <script src="./assets/js/apply_for_all.js"></script>
+    <script src="./assets/js/index.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="web">
+        <header class="header">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="./index.html">
+                        <img src="./assets/img/logo1.png" alt="Trang chủ" class="logo">
+                    </a>
+                    <ul class="nav">
+                        <li class="nav-item"><a class="btn btn-light" role="button" aria-disabled="true">HOT</a></li>
+
+                        <li class="nav-item"><a class="btn btn-light" role="button" aria-disabled="true">LỊCH SỬ</a>
+                        </li>
+                        <li>
+                            <div class="dropdown" id="dropdownType">
+                                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    THỂ LOẠI
+                                </button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    XẾP HẠNG
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">THUỘC TÍNH 1</a></li>
+                                    <li><a class="dropdown-item" href="#">THUỘC TÍNH 2</a></li>
+                                    <li><a class="dropdown-item" href="#">THUỘC TÍNH 3</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search" id="searchForm">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm truyện" aria-label="Search"
+                            id="searchValue" name="search">
+                        <button class="btn-search btn btn-outline-success" type="submit">Tìm</button>
+                    </form>
+                    
+                    <div id="isLogIn">
+                    </div>
+                </div>
+                <script>
+                    showLogIn()
+                    searchForm()
+                </script>
+            </nav>
+        </header>
+        <div class="container">
+            <div class="releated-story container">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="content" id="abcd">
+                            <!-- <h1>Truyện mới cập nhật</h1> -->
+                            <script>
+                                const f = document.getElementById('abcd')
+                                if (getTypes() === 0 && getSearch() === '') {
+                                    f.innerHTML = '<h1>Truyện mới cập nhật</h1>'
+                                }
+                                else {
+                                    f.innerHTML = '<h1>Kết quả tìm kiếm</h1>'
+                                }
+                            </script>
+                        </div>
+                        <div class="container">
+                            <div class="row row-cols-4" id="allTruyen">
+                                <!-- <div class="card col">
+                                    <img src="https://st.ntcdntempv3.com/data/comics/217/ta-co-mot-son-trai.jpg"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a class="name-story" href="./chi_tiet_truyen.html">Ta có
+                                                một sơn trại</a>
+                                        </h5>
+                                        <a href="#" class="card-text name-story">Chương 492</a>
+                                        <small class="text-muted time">3 phút trước</small>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <script>fillTruyen(getPages(), getTypes(), getSearch())</script>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-center">
+                            <div class="btn-group btn-group-lg container text-center" role="group"
+                                aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                                    checked>
+                                <label class="btn btn-outline-primary" for="btnradio1">Top Tháng</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnradio2">Top Tuần</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnradio3">Top Ngày</label>
+                            </div>
+                        </div>
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto container">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img class="image-toplist"
+                                                src="https://static.cdnno.com/poster/he-thong-sieu-cap-tong-mon/150.jpg?1585206125"
+                                                alt="">
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">Tiên Giả</div>
+                                                Đêm trăng tròn, huyết nguyệt giữa trời! Lam tinh bốn phía...
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">12</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto container">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img class="image-toplist"
+                                                src="https://static.cdnno.com/poster/can-cu-so-7/150.jpg?1650802893"
+                                                alt="">
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">Căn Cứ Số 7</div>
+                                                Trên phế tích, trong đồng hoang, Hứa Mạt...
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">12</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto container">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img class="image-toplist"
+                                                src="https://st.ntcdntempv3.com/data/comics/26/doc-bo-tieu-dao.jpg"
+                                                alt="">
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="ms-2 me-auto">
+                                                <div class="fw-bold">Độc Bộ Tiêu Dao</div>
+                                                Quyến luyến hồng trần. Thần phật tham lam, ta đành...
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">12</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pagination-lg justify-content-center" id="pagination">
+                    <!-- <li class="page-item"><a class="page-link active" href="#">1</a></li> -->
+                </ul>
+            </nav>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="./assets/img/logo1.png" alt="logo" class="logo">
+                            <h3>Bản quyền thuộc về ?</h3>
+                            <h2>2022
+                                To be continued</h2>
+                        </div>
+                        <div class="col-5">
+                            <h1>Thông tin liên hệ:</h1>
+                            <h2>số 1</h2>
+                            <h2>số 2</h2>
+                            <h2>số 3</h2>
+                        </div>
+                        <div class="col-7">
+                            <h3>Mọi thông tin và hình ảnh trên website đều được sưu tầm trên Internet. Chúng tôi không
+                                sở hữu hay chịu
+                                trách nhiệm bất kỳ thông tin nào trên web này. Nếu làm ảnh hưởng đến cá nhân hay tổ chức
+                                nào, thì chúng
+                                tôi xin chịu trách nhiệm và xem xét ngay lập tức.
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+.story-updated-info{
+    border: 2px black;
+    margin-bottom: 5px;
+}   
+.option-button{
+    margin: 5px
+}
+.pic-posted{
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    padding-right: 5px;
+}
+.col{
+    height: 500px;
+}
