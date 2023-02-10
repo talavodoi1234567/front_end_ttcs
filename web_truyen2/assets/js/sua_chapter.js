@@ -12,28 +12,38 @@ function fillCurrentChapter(chapterId) {
         })
 }
 function suaChapter(chapterId, storyId){
-    const apiURL = 'http://localhost:80/api/v1/story/up-chapter'
-    const jwttoken = localStorage.getItem('jwttoken')
-    const title = document.getElementById('title').value
-    const content = document.getElementById('description').innerHTML
-    console.log('title:', title)
-    console.log('content:' , content)
-    return
-    fetch(apiURL,{
+    const jwttoken = localStorage.getItem("jwttoken")
+    const sname = document.getElementById("title").value;
+    let content = document.getElementById("description").value;
+    const API_URL = 'http://localhost:80/api/v1/story/up-chapter';
+    content = content.replace(/\n/g, '<br>'); // replace new line with <br>
+    content = content.replace(/\t/g, '&emsp;'); // replace tab with &emsp;
+    const payload = {
+        id: chapterId,
+        storyId: storyId,
+        title: sname,
+        content: content,
+    };
+
+    // make the API call here with the name, description, and type values
+    // ...
+    fetch(API_URL, {
         method: 'POST',
-            headers: {
-                'Authorization': 'Bearer ' + jwttoken,
-                'Content-Type': 'application/json',
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
-                "Cache-Control": "no-cache",
-            },
-            body: JSON.stringify({
-                userId: chapterId,
-                storyId: storyId,
-                newPass: newPass,
-                repeat: repeat,
-            })
+        headers: {
+            'Authorization': 'Bearer ' + jwttoken,
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Requested-With",
+            "Cache-Control": "no-cache",
+        },
+        body: JSON.stringify(payload),
     })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .then(alert("Sửa thành công"))
+        .then(function(){
+            window.location.href = './truyen_da_dang.html'
+        })
+        .catch(error => console.error(error));
 }

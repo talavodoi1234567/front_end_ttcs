@@ -64,7 +64,9 @@ async function getForm(storyId) {
     const userId = localStorage.getItem('userId')
     const jwttoken = localStorage.getItem('jwttoken')
     const sname = document.getElementById("title").value;
-    const content = document.getElementById("description").value;
+    let content = document.getElementById("description").value;
+    content = content.replace(/\n/g, '<br>'); // replace new line with <br>
+    content = content.replace(/\t/g, '&emsp;'); // replace tab with &emsp;
     let listKind = [];
     let form = document.getElementById('createStoryForm');
     let checkboxes = form.querySelectorAll("input[type='checkbox'][name='category']");

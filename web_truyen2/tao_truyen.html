@@ -20,7 +20,7 @@
 
     <script src="./assets/js/apply_for_all.js"></script>
     <script src="./assets/js/tao_truyen.js"></script>
-    <title>Trang chủ</title>
+    <title>Tạo truyện mới</title>
 </head>
 
 <body>
@@ -94,10 +94,6 @@
             }
         </style>
         <form id="createStoryForm" class="add-form">
-            <div>
-                <label for="title">Chọn ảnh:</label>
-                <input class="form-control form-control-lg" id="formFileLg" type="file">
-            </div>
             <label for="title">Tiêu đề truyện:</label>
             <div>
                 <input type="text" id="title" name="title"
@@ -126,52 +122,42 @@
             <input type="checkbox" id="term" name="acceptTerm" value="accepted" class="noiquy">
             <label for="term" class="noiquy">Tôi đồng ý với <a href="./noi_quy.html">Nội Quy Đăng Truyện.</a></label>
             <input type="submit" class="btn btn-primary btn-lg" id="submit" value="Tạo truyện"></button>
-    </div>
-    </form>
-    <script>
-        let file
-        var fileField = document.getElementById("formFileLg");
-        console.log(fileField)
-        fileField.addEventListener('change', function () {
-            var formData = new FormData();
-            formData.append('file', fileField.files[0]);
-            file = formData.get('file')
-            console.log(file)
-        })
-        const form = document.getElementById("createStoryForm");
-        form.onsubmit = function (event) {
-            event.preventDefault();
-            getForm()
-            // window.location.href = './truyen_da_dang.html'
-        } 
-    </script>
-    <footer class="footer">
-        <div class="container user-info">
-            <div class="row">
-                <div class="col-3">
-                    <img src="./assets/img/logo1.png" alt="logo" class="logo">
-                    <h3>Bản quyền thuộc về ?</h3>
-                    <h2>2022
-                        To be continued</h2>
-                </div>
-                <div class="col-5">
-                    <h1>Thông tin liên hệ:</h1>
-                    <h2>số 1</h2>
-                    <h2>số 2</h2>
-                    <h2>số 3</h2>
-                </div>
-                <div class="col-4">
-                    <h3>Mọi thông tin và hình ảnh trên website đều được sưu tầm trên Internet. Chúng tôi
-                        không
-                        sở hữu hay chịu
-                        trách nhiệm bất kỳ thông tin nào trên web này. Nếu làm ảnh hưởng đến cá nhân hay tổ
-                        chức
-                        nào, thì chúng
-                        tôi xin chịu trách nhiệm và xem xét ngay lập tức.
-                    </h3>
+        </form>
+        <script>
+            const form = document.getElementById("createStoryForm");
+            form.onsubmit = function (event) {
+                event.preventDefault();
+                getForm()
+                // window.location.href = './truyen_da_dang.html'
+            } 
+        </script>
+        <footer class="footer">
+            <div class="container user-info">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="./assets/img/logo1.png" alt="logo" class="logo">
+                        <h3>Bản quyền thuộc về ?</h3>
+                        <h2>2022
+                            To be continued</h2>
+                    </div>
+                    <div class="col-5">
+                        <h1>Thông tin liên hệ:</h1>
+                        <h2>số 1</h2>
+                        <h2>số 2</h2>
+                        <h2>số 3</h2>
+                    </div>
+                    <div class="col-4">
+                        <h3>Mọi thông tin và hình ảnh trên website đều được sưu tầm trên Internet. Chúng tôi
+                            không
+                            sở hữu hay chịu
+                            trách nhiệm bất kỳ thông tin nào trên web này. Nếu làm ảnh hưởng đến cá nhân hay tổ
+                            chức
+                            nào, thì chúng
+                            tôi xin chịu trách nhiệm và xem xét ngay lập tức.
+                        </h3>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
     </div>
 </body>

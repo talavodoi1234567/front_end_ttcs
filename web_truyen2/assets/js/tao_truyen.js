@@ -47,7 +47,9 @@ async function getForm() {
     }
     else {
         const sname = document.getElementById("title").value;
-        const content = document.getElementById("description").value;
+        let content = document.getElementById("description").value;
+        content = content.replace(/\n/g, '<br>'); // replace new line with <br>
+        content = content.replace(/\t/g, '&emsp;'); // replace tab with &emsp;
         let listKind = [];
         let returnStoryId = 0
         let form = document.getElementById('createStoryForm');
@@ -85,24 +87,8 @@ async function getForm() {
         })
             .then(response => response.json())
             .then(data => console.log(data))
-            .then(alert("Đăng truyện thành công"))
+            .then(alert("Thêm thành công"))
             .then(window.location.href = './truyen_da_dang.html')
             .catch(error => console.error())
     }
 }
-// async function suaAnh(storyId, file) {
-//     const apiURL = 'http://localhost:80/api/v1/story/avatar?storyId=' + storyId
-//     const jwttoken = localStorage.getItem("jwttoken")
-//     var formData = new FormData();
-//     formData.append("file", file);
-//     var xhr = new XMLHttpRequest();
-//     xhr.open("POST", apiURL, true);
-//     xhr.setRequestHeader('Authorization', 'Bearer ' + jwttoken);
-//     xhr.send(formData);
-//     console.log(xhr)
-//     xhr.onreadystatechange = function () {
-//         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-//             console.log(this.responseText);
-//         }
-//     };
-// }

@@ -16,13 +16,13 @@ function signUp() {
         console.log(data)
         const id = data.id;
         if (id == null){
-            alert("Đăng ký thất bại");
+            alert("Email bị trùng với tài khoản khác");
         }
         else{
             alert("Đăng ký thành công");
-            open("./login.html");
+            window.location.href = "./login.html";
         }
     })
-    .catch(error => console.log(error));
+    .catch(error => console.error(error));
 
 }

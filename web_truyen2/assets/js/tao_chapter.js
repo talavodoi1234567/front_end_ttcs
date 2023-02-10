@@ -2,7 +2,6 @@ function upChapter(storyId) {
     const jwttoken = localStorage.getItem("jwttoken")
     const sname = document.getElementById("title").value;
     let content = document.getElementById("description").value;
-    let form = document.querySelector("form");
     const API_URL = 'http://localhost:80/api/v1/story/up-chapter';
     content = content.replace(/\n/g, '<br>'); // replace new line with <br>
     content = content.replace(/\t/g, '&emsp;'); // replace tab with &emsp;
