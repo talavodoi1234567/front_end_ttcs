@@ -1,8 +1,10 @@
+let maxPagesReal = 0
 async function getAllTruyen(pages) {
     let story = []
-    await fetch('http://localhost:80/api/v1/story/v2/home?page=' + pages + '&size=20')
+    await fetch('http://localhost:80/api/v1/story/v2/home?page=' + pages + '&size=8')
         .then(response => response.json())
         .then(data => {
+            maxPagesReal = data.data.storyHomePageDTOPage.totalPages
             if (data.data.storyHomePageDTOPage.totalPages - 1 >= pages){
                 data.data.storyHomePageDTOPage.content.forEach(element => {
                     story.push(element)
@@ -17,9 +19,10 @@ async function getAllTruyen(pages) {
 async function getTruyenByTK(pages, search) {
     if (search != ''){
         let story = []
-        await fetch('http://localhost:80/api/v1/story/v2/name?storyName='+ search + '&page=' + pages + '&size=20')
+        await fetch('http://localhost:80/api/v1/story/v2/name?storyName='+ search + '&page=' + pages + '&size=8')
             .then(response => response.json())
             .then(data => {
+                maxPagesReal = data.data.storyHomePageDTOPage.totalPages
                 data.data.storyHomePageDTOPage.content.forEach(element => {
                     story.push(element)
                 });
@@ -32,9 +35,10 @@ async function getTruyenByTK(pages, search) {
 async function getTruyenByTL(pages, types) {
     let story = []
     if (types > 0){
-        await fetch('http://localhost:80/api/v1/story/v2/kind?kindId='+ types + '&page=' + pages +'&size=20')
+        await fetch('http://localhost:80/api/v1/story/v2/kind?kindId='+ types + '&page=' + pages +'&size=8')
             .then(response => response.json())
             .then(data => {
+                maxPagesReal = data.data.storyHomePageDTOPage.totalPages
                 data.data.storyHomePageDTOPage.content.forEach(element => {
                     story.push(element)
                 });
@@ -47,6 +51,7 @@ async function getTruyenByTL(pages, types) {
 function createPaginationPart(currentPage, maxPage, types, search)
 {
     //currentPage <= maxPage
+    console.log(currentPage, maxPage)
     let URLpart = ''
     if (types === 0 && search === '') {
     } else if (types !== 0 && search === '') {
@@ -54,9 +59,9 @@ function createPaginationPart(currentPage, maxPage, types, search)
     } else if (types === 0 && search !== '') {
         URLpart = 'search=' + search
     }
-    // if (currentPage > maxPage) {
-    //     return ''
-    // }
+    if (currentPage > maxPage) {
+        return ''
+    }
     let strpreviousPage = ``
     let strcurrentPage = `
     <li class="page-item">
@@ -134,7 +139,6 @@ async function fillTruyen(pages, types=0, search='') {
     } else if (types === 0 && search !== '') {
         data = await getTruyenByTK(pages, search);
     }
-    let maxPages = Math.floor(data.length / 20 + 1)
     const whereToFill = document.getElementById('allTruyen')
     const fillPagination = document.getElementById('pagination')
     let strFill = ``
@@ -158,7 +162,7 @@ async function fillTruyen(pages, types=0, search='') {
         })
     }
     whereToFill.innerHTML = strFill
-    fillPagination.innerHTML = createPaginationPart(pages, maxPages - 1, types, search)
+    fillPagination.innerHTML = createPaginationPart(pages, maxPagesReal - 1, types, search)
 }
 function getPages() {
     let searchParams = new URLSearchParams(window.location.search);
